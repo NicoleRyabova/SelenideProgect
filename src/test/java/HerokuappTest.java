@@ -4,6 +4,8 @@ import com.codeborne.selenide.Selenide;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class HerokuappTest extends BaseClass {
     @BeforeMethod
     public void beforeMethod(){
@@ -15,6 +17,6 @@ public class HerokuappTest extends BaseClass {
         herokuappPage.helloWorldText.shouldNotBe(Condition.visible);
         herokuappPage.button.click();
         Selenide.sleep(5000);
-        herokuappPage.helloWorldText.shouldBe(Condition.visible);
+        herokuappPage.helloWorldText.shouldBe(Condition.visible, Duration.ofSeconds(5));
     }
 }
