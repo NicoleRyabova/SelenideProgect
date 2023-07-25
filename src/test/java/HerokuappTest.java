@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 public class HerokuappTest extends BaseClass {
     @BeforeMethod
     public void beforeMethod(){
-        Selenide.open(app.herokuappPage().getAddress());
+        Selenide.open(herokuappPage.getAddress());
 
     }
     @Test
     public void test(){
-        app.herokuappPage().helloWorldText.shouldNotBe(Condition.visible);
-        app.herokuappPage().button.click();
+        herokuappPage.helloWorldText.shouldNotBe(Condition.visible);
+        herokuappPage.button.click();
         Selenide.sleep(5000);
-        app.herokuappPage().helloWorldText.shouldBe(Condition.visible);
+        herokuappPage.helloWorldText.shouldBe(Condition.visible);
     }
 }

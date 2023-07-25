@@ -26,30 +26,30 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 ////-  проверяется, что перешли на страницу LoginPage
 ////  (перешли на страницу с нужным адресом
 ////  и есть лого с текстом "Swag Labs")
-public class FirstTest extends BaseClass {
+public class FirstTwoTests extends BaseClass {
     @BeforeMethod
     public void beforeMethod(){
-        Selenide.open(app.loginPage().getAddress());
+        Selenide.open(loginPage.getAddress());
 
     }
     @Test
     public void test() {
-        app.loginPage().logo.shouldBe(Condition.visible);
-        app.loginPage().logo.shouldHave(Condition.exactText("Swag Labs"));
+        loginPage.logo.shouldBe(Condition.visible);
+        loginPage.logo.shouldHave(Condition.exactText("Swag Labs"));
     }
 
     @Test
     public void secondTest() {
-        app.loginPage().username.setValue("standard_user");
-        app.loginPage().password.setValue("secret_sauce");
-        app.loginPage().loginButton.click();
+        loginPage.username.setValue("standard_user");
+        loginPage.password.setValue("secret_sauce");
+        loginPage.loginButton.click();
         webdriver().shouldHave(url("https://www.saucedemo.com/inventory.html"));
-        app.productPage().products.shouldHave(Condition.exactText("Products"));
-        app.productPage().burger.shouldBe(Condition.visible);
-        app.productPage().burger.click();
-        app.productPage().logout.shouldBe(Condition.visible);
-        app.productPage().logout.click();
+        productPage.products.shouldHave(Condition.exactText("Products"));
+        productPage.burger.shouldBe(Condition.visible);
+        productPage.burger.click();
+        productPage.logout.shouldBe(Condition.visible);
+        productPage.logout.click();
         webdriver().shouldHave(url("https://www.saucedemo.com/"));
-        app.loginPage().logo.shouldHave(Condition.exactText("Swag Labs"));
+        loginPage.logo.shouldHave(Condition.exactText("Swag Labs"));
     }
 }
